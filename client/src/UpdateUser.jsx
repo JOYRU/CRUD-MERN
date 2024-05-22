@@ -24,9 +24,19 @@ export default function UpdateUser() {
     .catch(err=>console.log(err))
   },[])
 
+  const Update= (e) =>{
+    e.preventDefault()  ; 
+    axios.put("http://localhost:3001/updateUser/"+id , {name ,email ,age})
+    .then(result =>{
+      console.log(result)
+      navigate('/')
+    })
+    .catch(err=>console.log(err))
+  }
+
   return (
     <article>
-     <form>
+     <form onSubmit={Update}>
       <h2>Update User</h2>
       <div class="form-group container center_div">
         <label for="inputName" class="col-sm-2 col-form-label">Name</label>
